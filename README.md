@@ -1,3 +1,8 @@
+# 20251119-20251121
+- [Vue 3 강좌 한방에 몰아보기 - 2시간 정주행](https://www.youtube.com/watch?v=m2j_Y245xew&t=1754s)
+- 위의 강의 참고하여 vue3 기초공부
+  
+<hr>
 # vue-Test
 
 This template should help get you started developing with Vue 3 in Vite.
