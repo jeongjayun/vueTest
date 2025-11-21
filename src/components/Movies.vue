@@ -1,0 +1,40 @@
+<template>
+  <div class="container">
+    <h1>영화 정보</h1>
+
+    <div v-for="movie in data" :key="movie.id" class="item">
+      <figure>
+        <img :src="`${movie.imgUrl}`" :alt="movie.title" />
+      </figure>
+      <div class="info">
+        <h3 class="bg-yellow">{{ movie.title }}</h3>
+        <p>개봉 : {{ movie.year }}</p>
+        <p>장르 : {{ movie.category }}</p>
+        <button @click="$emit('increaseLike', movie.id)">좋아요</button>
+        <span>{{ movie.like }}</span>
+
+        <p>
+          <button @click="$emit('openModal', movie.id)">상세보기</button>
+          <!--
+          지금 보고 있는 강의가 1년 전 강의라 강의 시 문법과 차이가 있음.
+          -->
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MoviesComponent',
+  props: {
+    data: Array,
+  },
+}
+</script>
+
+<style>
+.container {
+  padding: 20px;
+}
+</style>
