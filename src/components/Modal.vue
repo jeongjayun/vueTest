@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* 모달창 */
 .modal {
   background: rgba(0, 0, 0, 0.35);

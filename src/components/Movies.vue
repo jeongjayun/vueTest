@@ -33,8 +33,45 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 10px;
+  margin-top: 1rem;
+}
+
+.item {
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+  margin-bottom: 20px;
+  /* padding: 1rem; */
+}
+
+.item figure {
+  width: 40%;
+  margin-right: 1rem;
+}
+
+.item img {
+  width: 100%;
+}
+
+.item .info {
+  width: 100%;
 }
 </style>
