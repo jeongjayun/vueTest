@@ -13,7 +13,8 @@ export default {
       <router-link to="/">홈 (영화앱)</router-link> |
       <router-link to="/about">소개 페이지</router-link> |
       <!-- Grid 연습 페이지로 이동하는 링크 -->
-      <router-link to="/grid">Grid 연습</router-link>
+      <router-link to="/grid">Grid 연습</router-link> |
+      <router-link to="/grid2">Grid 연습2</router-link>
     </nav>
 
     <!-- 2. 라우트 뷰: 이 자리에 URL에 맞는 Home, About, GridPractice 중 하나가 로드됩니다. -->

@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/AboutView.vue'
 import GridPractice from '../views/GridPractice.vue'
+import GridPractice2 from '../views/GridPractice2.vue'
 
 // 라우팅 규칙 정의 (URL과 컴포넌트를 연결)
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     path: '/grid', // URL: /grid
     name: 'GridPractice',
     component: GridPractice, // App.vue의 <router-view> 자리에 GridPractice.vue를 보여줍니다.
+  },
+  {
+    path: '/grid2', // URL: /grid
+    name: 'GridPractice2',
+    component: GridPractice2, // App.vue의 <router-view> 자리에 GridPractice2.vue를 보여줍니다.
   },
 ]
 
