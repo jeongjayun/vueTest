@@ -1,8 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { summaryColumns, summaryData, detailedColumns, detailedData } from '@/assets/tableData2'
-import SummaryTableComponent from '@/components/SummaryTableComponent.vue'
-import DetailedTableComponent from '@/components/DetailedTableComponent.vue'
+import {
+  summaryColumns,
+  summaryData,
+  detailedColumns,
+  detailedData,
+} from '@/views/GridPractice2/tableData2.js'
+import SummaryTableComponent from '@/views/GridPractice2/SummaryTableComponent.vue'
+import DetailedTableComponent from '@/views/GridPractice2/DetailedTableComponent.vue'
+import SearchBar from '@/views/Home/SearchBar.vue'
 
 // 원본 데이터
 const SummaryRows = ref(summaryData)
@@ -40,7 +46,13 @@ const toggleRowSelection = (id) => {
     <h2>테이블 그리드 연습(20251126)</h2>
 
     <div class="searchDiv">
-      <p>조회 div 연습 예정</p>
+      <p>조회 div 연습 중</p>
+      <SearchBar />
+      <!-- TODO : 영화앱에서 사용한 SearchBar는 여기선 사용할 수가 없다 ...
+        1. 이름을 검색한다.
+        2. Summary에 일부만 검색해도 일치되는 것들이 나온다.
+        3. 누르면 디테일에서 상세정보를 본다.
+      -->
     </div>
 
     <div class="two-tables">

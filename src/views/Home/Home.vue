@@ -1,11 +1,11 @@
 <script>
 // 필요한 컴포넌트들과 영화 데이터를 import 합니다.
-import data from '../assets/movies' // 영화 데이터
-import Navbar from '../components/Navbar.vue' // Nav
-import Modal from '../components/Modal.vue' // Modal
-import Event from '../components/Event.vue' // 이벤트 박스
-import Movies from '../components/Movies.vue' // 영화정보
-import SearchBar from '../components/SearchBar.vue' // 검색창
+import data from '@/views/Home/movies' // 영화 데이터
+import Navbar from '@/views/Home/Navbar.vue' // Nav
+import Modal from '@/views/Home/Modal.vue' // Modal
+import Event from '@/views/Home/Event.vue' // 이벤트 박스
+import Movies from '@/views/Home/Movies.vue' // 영화정보
+import SearchBar from '@/views/Home/SearchBar.vue' // 검색창
 
 export default {
   name: 'HomeView',

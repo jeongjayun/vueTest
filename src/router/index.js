@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // 각 페이지 컴포넌트를 불러옵니다.
-import Home from '../views/Home.vue'
+import Home from '../views/Home/Home.vue'
 import About from '../views/AboutView.vue'
-import GridPractice from '../views/GridPractice.vue'
-import GridPractice2 from '../views/GridPractice2.vue'
+import GridPractice from '../views/GridPractice/GridPractice.vue'
+import GridPractice2 from '../views/GridPractice2/GridPractice2.vue'
 
 // 라우팅 규칙 정의 (URL과 컴포넌트를 연결)
 const routes = [

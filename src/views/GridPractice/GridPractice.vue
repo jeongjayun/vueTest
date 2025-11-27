@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue' // ref를 가져온다.
-import { tableColumns, tableRows } from '@/assets/tableData.js'
-import TableComponent from '@/components/TableComponent.vue'
+import { tableColumns, tableRows } from '@/views/GridPractice/tableData.js'
+import TableComponent from '@/views/GridPractice/TableComponent.vue'
 
 // 전체 데이터를 반응형으로 관리;
 const allRows = ref(tableRows)

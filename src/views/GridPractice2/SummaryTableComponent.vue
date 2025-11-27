@@ -6,7 +6,7 @@ defineProps({
   selectedIds: Array, // 부모로부터 ID 배열을 받음
 })
 
-const emit = defineEmits(['row-clicked'])
+// const emit = defineEmits(['row-clicked'])
 </script>
 
 <template>
@@ -59,5 +59,16 @@ input {
 .button-wrap {
   padding: 10px 0px;
   text-align: right;
+}
+
+.selected-row {
+  background-color: #eee;
+}
+
+/* 추가: 마우스 오버(hover) 스타일도 유지하려면 */
+tbody tr:hover {
+  /* hover 스타일이 selected-row를 덮어쓰지 않도록 !important를 사용할 수 있지만,
+     클래스 우선순위를 높이거나 hover 스타일보다 아래에 selected-row 스타일을 두는 것이 좋습니다. */
+  background-color: #ffeeee;
 }
 </style>
