@@ -7,20 +7,22 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "cross-env LAUNCH_EDITOR=\"C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2.4\\bin\\idea64.exe\" vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.5.22"
+    "vue": "^3.5.22",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.1.1",
     "@vue/eslint-config-prettier": "^10.2.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.37.0",
     "eslint-plugin-vue": "~10.5.0",
     "globals": "^16.4.0",

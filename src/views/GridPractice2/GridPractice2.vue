@@ -8,7 +8,7 @@ import {
 } from '@/views/GridPractice2/tableData2.js'
 import SummaryTableComponent from '@/views/GridPractice2/SummaryTableComponent.vue'
 import DetailedTableComponent from '@/views/GridPractice2/DetailedTableComponent.vue'
-import SearchBar from '@/views/Home/SearchBar.vue'
+import SearchBarComponent from '@/views/GridPractice2/SearchBarComponent.vue'
 
 // 원본 데이터
 const SummaryRows = ref(summaryData)
@@ -45,15 +45,11 @@ const toggleRowSelection = (id) => {
   <div class="container">
     <h2>테이블 그리드 연습(20251126)</h2>
 
-    <div class="searchDiv">
-      <p>조회 div 연습 중</p>
-      <SearchBar />
-      <!-- TODO : 영화앱에서 사용한 SearchBar는 여기선 사용할 수가 없다 ...
-        1. 이름을 검색한다.
-        2. Summary에 일부만 검색해도 일치되는 것들이 나온다.
-        3. 누르면 디테일에서 상세정보를 본다.
-      -->
+    <div class="buttonDiv">
+      <button>조회</button>
     </div>
+
+    <SearchBarComponent />
 
     <div class="two-tables">
       <div>
@@ -97,16 +93,6 @@ h3 {
   margin-bottom: 15px;
 }
 
-/* 검색 영역 */
-.searchDiv {
-  background-color: #f7f9fc;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
 /* 두 테이블 배치 (SummaryTableComponent와 DetailedTableComponent를 감싸는 영역) */
 .two-tables {
   display: flex;
@@ -117,5 +103,27 @@ h3 {
 .two-tables > div {
   flex: 1; /* 두 테이블이 공간을 균등하게 차지 */
   min-width: 400px;
+}
+
+/* button DIV */
+.buttonDiv {
+  text-align: right;
+  margin: 0px;
+}
+
+.buttonDiv button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.buttonDiv button:hover {
+  background-color: #0056b3;
 }
 </style>
