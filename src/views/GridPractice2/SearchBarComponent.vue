@@ -12,7 +12,13 @@
             <label for="searchName">이름</label>
           </td>
           <td>
-            <input type="search" id="searchName" name="searchName" placeholder="name" />
+            <input
+              type="search"
+              id="searchName"
+              name="searchName"
+              placeholder="name"
+              v-model="searchNameText"
+            />
           </td>
         </tr>
         <tr>
@@ -20,27 +26,56 @@
             <label for="searchId">아이디</label>
           </td>
           <td>
-            <input type="search" id="searchId" name="searchId" placeholder="id" />
+            <input
+              type="search"
+              id="searchId"
+              name="searchId"
+              placeholder="id"
+              v-model="searchIdText"
+            />
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <button>검색</button>
+  <button @click="handleSearch">검색</button>
+  <p>입력된 이름: {{ searchNameText }}</p>
+  <p>입력된 아이디: {{ searchIdText }}</p>
 </template>
 
 <script>
 export default {
   name: 'SearchBarComponent',
+  emits: ['search-data'],
   data() {
     return {
-      searchNameText: '',
-      searchIdText: '', // ID 검색용 변수 추가
+      searchNameText: '', // v-model로 바인딩된 이름
+      searchIdText: '', // v-model로 바인딩된 아이디
     }
   },
   props: {
-    data() {},
+    data: Array, // 원본
+  },
+  methods: {
+    handleSearch() {
+      // console.log('click')
+
+      //1. 현재 검색어 데이터 객체 생성
+      const searchParams = {
+        name: this.searchNameText,
+        id: this.searchIdText,
+      }
+
+      console.log(searchParams)
+
+      //2. 상위 컴포넌트로 검색어 전달
+      this.$emit('search-data', searchParams)
+
+      // 3. (선택) 검색 후 입력 필드 초기화
+      this.searchNameText = ''
+      this.searchIdText = ''
+    },
   },
 }
 </script>

@@ -10,24 +10,46 @@ import SummaryTableComponent from '@/views/GridPractice2/SummaryTableComponent.v
 import DetailedTableComponent from '@/views/GridPractice2/DetailedTableComponent.vue'
 import SearchBarComponent from '@/views/GridPractice2/SearchBarComponent.vue'
 
-// 원본 데이터
-const SummaryRows = ref(summaryData)
+// 1. 원본 데이터 저장 (검색 전의 모든 데이터)
+const originalSummaryData = summaryData // 원본 배열을 별도로 저장 (Ref 필요 없음)
+
+// 2. 바인딩 데이터 (화면에 표시되는 데이터)
+const SummaryRows = ref(originalSummaryData) // 이 데이터를 필터링하여 화면에 표시
 const allDetailedRows = ref(detailedData)
 
-// 1. 상태수정 : 선택된 ID를 배열로 관리한다.
+// 3. 상태수정 : 선택된 ID를 배열로 관리한다.
 const selectedIds = ref([])
 
-// 2. computed : 선택된 ID 배열을 기반으로 상세 데이터 목록 계산
-const selectedDetailedRows = computed(() => {
-  if (selectedIds.value.length === 0) {
-    return [] // 선택된 ID가 없으면 빈 배열
+// 4. 검색 핸들러 추가: SearchBarComponent에서 데이터 수신
+const handleSearch = (searchParams) => {
+  const { name, id } = searchParams
+
+  // 검색어가 모두 공백이면 전체 목록을 표시
+  if (!name && !id) {
+    SummaryRows.value = originalSummaryData
+    return
   }
 
-  // selectedIds 배열에 포함된 모든 ID에 해당하는 상세 데이터를 필터링
-  return allDetailedRows.value.filter((item) => selectedIds.value.includes(item.id))
-})
+  // 원본 데이터를 기준으로 필터링 실행
+  SummaryRows.value = originalSummaryData.filter((item) => {
+    // 1. 이름 검색 로직: 입력된 이름이 공백이 아니면서 (name) 아이템의 name에 포함되는지 확인
+    const nameMatch = name ? item.name.toLowerCase().includes(name.toLowerCase()) : true // 이름 검색어가 없으면 항상 true
 
-// 3. handler 수정
+    // 2. 아이디 검색 로직: 입력된 아이디가 공백이 아니면서 (id) 아이템의 id에 포함되는지 확인
+    const idMatch = id
+      ? String(item.id).includes(id) // id는 숫자인 경우가 많으므로 String으로 변환 후 비교
+      : true // 아이디 검색어가 없으면 항상 true
+
+    // 두 조건 모두 만족하는 항목만 반환 (AND 조건)
+    // 두 값 중 하나만 입력되어도, 입력된 값에 해당하는 필터링만 적용됨.
+    return nameMatch && idMatch
+  })
+
+  // 검색 후 상세 데이터 선택 해제 (선택 사항)
+  selectedIds.value = []
+}
+
+// 5. handler 수정 (기존 toggleRowSelection 함수)
 const toggleRowSelection = (id) => {
   const index = selectedIds.value.indexOf(id)
 
@@ -39,17 +61,27 @@ const toggleRowSelection = (id) => {
     selectedIds.value.push(id)
   }
 }
+
+// 2. computed : 선택된 ID 배열을 기반으로 상세 데이터 목록 계산 (재배치)
+const selectedDetailedRows = computed(() => {
+  if (selectedIds.value.length === 0) {
+    return []
+  }
+
+  // selectedIds 배열에 포함된 모든 ID에 해당하는 상세 데이터를 필터링
+  return allDetailedRows.value.filter((item) => selectedIds.value.includes(item.id))
+})
 </script>
 
 <template>
   <div class="container">
     <h2>테이블 그리드 연습(20251126)</h2>
 
-    <div class="buttonDiv">
-      <button>조회</button>
-    </div>
+    <!--    <div class="buttonDiv">-->
+    <!--      <button>조회</button>-->
+    <!--    </div>-->
 
-    <SearchBarComponent />
+    <SearchBarComponent @search-data="handleSearch" />
 
     <div class="two-tables">
       <div>
